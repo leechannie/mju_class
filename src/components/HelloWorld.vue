@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <!-- <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -80,19 +80,30 @@
         </a>
       </li>
     </ul>
-  </div>
+  </div>  -->
+  <b-button @click="save">취소</b-button>
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      e: ''
+    }
+  },
+  methods: {
+    save(){
+        firebase.database().ref().child('테스트').set({
+          name: '찬희'
+      })
     }
   }
 }
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
