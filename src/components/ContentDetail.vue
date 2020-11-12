@@ -35,8 +35,9 @@
 </template>
 
 <script>
-import data from "@/data/index.js";
+//import data from "@/data/index.js";
 import CommentList from "./CommentList";
+import firebase from 'firebase'
 
 export default {
   name: "ContentDetail",
@@ -44,8 +45,8 @@ export default {
     CommentList,
   },
   data() {
-    const contentId = Number(this.$route.params.contentId);
-    const contentData = data.Content.filter(item => item.content_id === contentId)[0]
+   // const contentId = Number(this.$route.params.contentId);
+   // const contentData = data.Content.filter(item => item.content_id === contentId)[0]
     return { //글에 필요한 내용을 가져오기 위한 부분
       contentId: contentId,
       title: contentData.title,
