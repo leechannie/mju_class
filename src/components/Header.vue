@@ -8,6 +8,7 @@
      <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item to="/board/free"><strong>공지사항</strong></b-nav-item>
+        <b-nav-item to="/room/rsv"><strong>강의실 예약</strong></b-nav-item>
         <b-nav-item  to="/board_l/free"><strong>분실물 센터</strong></b-nav-item>
         <b-nav-item to="/board_s/free"><strong> With Me? (스터디원 모집)</strong></b-nav-item>
       </b-navbar-nav>

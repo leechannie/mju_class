@@ -14,7 +14,7 @@
     ></b-pagination>
     <b-button @click="writeContent">글쓰기</b-button>
   </div>
-</template>`
+</template>
 
 <script>
 //import data from '@/data/index.js' //data 파일에서 데이터 불러오기

@@ -19,7 +19,8 @@ import CommentList_s from '@/components/CommentList_s';
 import CommentListItem from '@/components/CommentListItem';
 import CommentListItem_l from '@/components/CommentListItem_l';
 import CommentListItem_s from '@/components/CommentListItem_s';
-
+import Room_main from '@/components/Room_main';
+import Room_info from '@/components/Room_info';
 Vue.use(Router)
 
 export default new Router({
@@ -183,6 +184,18 @@ export default new Router({
       path: '/board_s/free/CommentListItem/:comment_id?', 
       name: 'CommentListItem_s',
       component: CommentListItem_s
+    },
+
+    //강의실예약
+    {
+      path: '/room/rsv',
+      name : 'Room_main',
+      component: Room_main
+    },
+    {
+      path: '/room/rsv/info/:room_no',
+      name : 'Room_info',
+      component: Room_info
     },
   ]
 })
