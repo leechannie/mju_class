@@ -41,7 +41,7 @@ export default {
     var db = firebase.firestore();
     const today = new Date();
   
-        db.collection("board").add({
+         db.collection("board").doc(String(count+1)).set({
           content_id: (count+1),
           user_id: "1",
           title: this.subject,

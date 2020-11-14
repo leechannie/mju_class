@@ -26,6 +26,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
+Vue.prototype.$firebase = firebase;
+
 Vue.use(BootstrapVue)
 /* eslint-disable no-new */
 new Vue({

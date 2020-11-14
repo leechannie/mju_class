@@ -76,7 +76,7 @@ export default {
          content_id:item.content_id, title: item.title, user_name: item.user_id, created_at: item.created_at
         }
       })
-
+      console.log(this.items);
     }
   }
 }

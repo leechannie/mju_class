@@ -35,9 +35,12 @@
 </template>
 
 <script>
-//import data from "@/data/index.js";
+import data from "@/data/index.js";
 import CommentList from "./CommentList";
 import firebase from 'firebase'
+import ContentDetail_sVue from './ContentDetail_s.vue';
+
+var contentData;
 
 export default {
   name: "ContentDetail",
@@ -45,16 +48,23 @@ export default {
     CommentList,
   },
   data() {
-   // const contentId = Number(this.$route.params.contentId);
-   // const contentData = data.Content.filter(item => item.content_id === contentId)[0]
-    return { //글에 필요한 내용을 가져오기 위한 부분
+    const contentId = Number(this.$route.params.contentId);
+   return { //글에 필요한 내용을 가져오기 위한 부분
+      //  contentId: contentId,
+      //  title: contentData[title],
+      //  context: contentData[context],
+      //  user: contentData[user_id],
+      //  created: contentData[created_at]
       contentId: contentId,
-      title: contentData.title,
-      context: contentData.context,
-      user: data.User.filter(item => item.user_id === contentData.user_id)[0]
-        .name,
-      created: contentData.created_at
+      title: docRef.title,
+      context: docRef.context,
+      user: docRef.user_id,
+      created: docRef.created_at
     };
+  },
+  created(){
+    this.read();
+    console.log(contentData);
   },
   methods: {
     deleteData() {
@@ -69,7 +79,23 @@ export default {
       this.$router.push({
         path: `/board/free/create/${this.contentId}` //content의 번호가 index 됨(빈 인풋이 아닌 콘텐츠 번호의 객체를 보여줌)
       })
-    }
+    },
+    read(){
+      var db = firebase.firestore();
+      var docRef = db.collection("board").doc(String(this.$route.params.contentId));
+      docRef.get().then(function(doc) {
+          if (doc.exists) {
+              contentData = [doc.data()].concat([]);
+              console.log(contentData);
+              return (contentData);
+          } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+          }
+      }).catch(function(error) {
+          console.log("Error getting document:", error);
+      });
+    } 
   }
 };
 </script>
