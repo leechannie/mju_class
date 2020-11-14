@@ -14,7 +14,7 @@
     ></b-pagination>
     <b-button @click="writeContent">글쓰기</b-button>
   </div>
-</template>`
+</template>
 
 <script>
 //import data from '@/data/index.js' //data 파일에서 데이터 불러오기
@@ -69,14 +69,14 @@ export default {
     },
     async read(){
       var db = firebase.firestore();
-      const sn = await db.collection("board").get()
+      const sn = await db.collection("board").orderBy("content_id","desc").get()
       this.items = sn.docs.map(v=> {
         const item = v.data()
         return {
          content_id:item.content_id, title: item.title, user_name: item.user_id, created_at: item.created_at
         }
       })
-      //console.log(this.items.length)
+
     }
   }
 }

@@ -7,7 +7,7 @@
       rows="10"
       max-rows="40"
     ></b-form-textarea>
-    <b-button @click="updateMode ? updateContent() : save()">저장</b-button>
+    <b-button @click="updateMode ? updateContent() : uploadContent()">저장</b-button>
     <b-button @click="cancle">취소</b-button>
   </div>
 </template>
@@ -37,19 +37,10 @@ export default {
     }
   },
   methods: {
-    save() { //파일 업로드
+    uploadContent() { //파일 업로드
     var db = firebase.firestore();
     const today = new Date();
-    
-    // let items = data.Content.sort((a,b) => {return b.content_id - a.content_id})
-      // const content_id = items[0].content_id + 1 //콘텐츠 번호를 최신의 +1로 함
-      // data.Content.push({
-        // content_id: content_id,
-        // user_id: this.userId,
-        // title: this.subject,
-        // context: this.context,
-        // created_at: this.createdAt,
-        // updated_at: null,
+  
         db.collection("board").add({
           content_id: (count+1),
           user_id: "1",

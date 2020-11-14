@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import data from '@/data/study.js' //data 파일에서 데이터 불러오기
- 
+//import data from '@/data/study.js' //data 파일에서 데이터 불러오기
+import firebase from 'firebase'
 export default {
   name: 'Board',
   data() {
-    let items = data.Content.sort((a,b) => {return b.content_id - a.content_id}) //역순 정렬
-    items = items.map(contentItem => {return {...contentItem, user_name: data.User.filter(userItem => userItem.user_id === contentItem.user_id)[0].name}}) //일치하는 유저 이름, id을 가져옴.
+    //let items = data.Content.sort((a,b) => {return b.content_id - a.content_id}) //역순 정렬
+    //items = items.map(contentItem => {return {...contentItem, user_name: data.User.filter(userItem => userItem.user_id === contentItem.user_id)[0].name}}) //일치하는 유저 이름, id을 가져옴.
     return {
       currentPage: 1,
       perPage: 10,
@@ -45,13 +45,16 @@ export default {
           label: '글쓴이'
         },
       ],
-      items: items
+      items: [],
       };
     },
     computed: {
       rows() {
       return this.items.length;
     }
+  },
+  created(){
+    this.read()
   },
   methods: {
     rowClick(item) {
@@ -63,6 +66,17 @@ export default {
       this.$router.push({
         path: '/board_s/free/create'
       })
+    },
+     async read(){
+      var db = firebase.firestore();
+      const sn = await db.collection("board_s").orderBy("content_id","desc").get()
+      this.items = sn.docs.map(v=> {
+        const item = v.data()
+        return {
+         content_id:item.content_id, title: item.title, user_name: item.user_id, created_at: item.created_at
+        }
+      })
+
     }
   }
 }
