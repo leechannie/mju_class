@@ -46,13 +46,15 @@ export default {
   data() {
     const contentId = Number(this.$route.params.contentId);
     const contentData = data.Content.filter(item => item.content_id === contentId)[0]
+    console.log(contentData)
     return { //글에 필요한 내용을 가져오기 위한 부분
       contentId: contentId,
       title: contentData.title,
       context: contentData.context,
       user: data.User.filter(item => item.user_id === contentData.user_id)[0]
         .name,
-      created: contentData.created_at
+      created: contentData.created_at,
+      //file = contentData.file
     };
   },
   methods: {
