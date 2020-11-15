@@ -21,6 +21,8 @@ import CommentListItem_l from '@/components/CommentListItem_l';
 import CommentListItem_s from '@/components/CommentListItem_s';
 import Room_main from '@/components/Room_main';
 import Room_info from '@/components/Room_info';
+import test from '@/components/test';
+
 Vue.use(Router)
 
 export default new Router({
@@ -193,7 +195,7 @@ export default new Router({
       component: Room_main
     },
     {
-      path: '/room/rsv/info/:room_no',
+      path: '/room/rsv/info/:roomno',
       name : 'Room_info',
       component: Room_info
     },
