@@ -7,20 +7,20 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- 여기까지 부트스트랩 -->
     <!-- 여기서부터-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <!-- 여기까지 moment.js--> 
     <style>
       @import url(style.css);
-      label {
-        display: block;
-      }
-      label span {
+      span {
         display: inline-block;
         padding: 20px;
         text-align: right;
       }
       #form_date {
           display: inline-block;
+      }
+      #form_date label {
+        display: block;
       }
     </style>
   </head>
@@ -36,83 +36,115 @@
         var day7 = m.add("days",1).format('MM월 DD일 (ddd)');
     </script>
     <div class="container">
-      <div class= "text-center col-12">
-        <h1>
-          강의실 예약 메일 보내기
-        </h1>
-        <form>
-          <label>
-            <span>개인정보 수집 동의</span><input type="checkbox" name="agree" value="예">예
-          </label>
-          <label>
-            <span>대표자</span><textarea placeholder="이름/학번/전화번호를 기재해주세요"></textarea>
-          </label>
-          <label>
-            <span>이메일</span><input type="email" placeholder="이메일을 기재해주세요">
-          </label>
-          <label>
-            <span>참여자</span><textarea rows="5" placeholder="이름/학번/전화번호를 기재해주세요"></textarea>
-          </label>
-          <label>
-            <span>날짜</span>
-            <div id="form_date">
-                <label>
-                    <input type="radio" name="date" value="1">
-                    <script>document.write(day1);</script>
-                </label>
-                <label>
-                    <input type="radio" name="date" value="2">
-                    <script>document.write(day2);</script>
-                </label>
-                <label>
-                    <input type="radio" name="date" value="3">
-                    <script>document.write(day3);</script>
-                </label>
-                <label>
-                    <input type="radio" name="date" value="4">
-                    <script>document.write(day4);</script>
-                </label>
-                <label>
-                    <input type="radio" name="date" value="5">
-                    <script>document.write(day5);</script>
-                </label>
-                <label>
-                    <input type="radio" name="date" value="6">
-                    <script>document.write(day6);</script>
-                </label>
-                <label>
-                    <input type="radio" name="date" value="7">
-                    <script>document.write(day7);</script>
-                </label>
-            </div>
-          <label>
-            <span>시간</span><select name="time"><br>
-                <option value="9시~10시">9시~10시</option>
-                <option value="10시~11시">10시~11시</option>
-                <option value="11시~12시">11시~12시</option>
-                <option value="12시~13시">12시~13시</option>
-                <option value="13시~14시">13시~14시</option>
-                <option value="14시~15시">14시~15시</option>
-                <option value="15시~16시">15시~16시</option>
-                <option value="16시~17시">16시~17시</option>
-                <option value="17시~18시">17시~18시</option>
-                <option value="18시~19시">18시~19시</option>
-                <option value="19시~20시">19시~20시</option>
-                <option value="20시~21시">20시~21시</option>
-                <option value="21시~22시">21시~22시</option>
-            </select>
-          </label>    
-        <p>
-          +주의사항<br>
-          1. 승인 메일을 교학팀에 확인받고 강의실을 이용<br>
-          2. 메일 제출 후, 수정 사항이 있거나 취소시, 010 - xxxx- tttttt 로 연락.
-        </p>
-        <hr>
-          <button type="submit" class="btn btn-primary">
-            제출
-          </button>
-        </form>
-      </div>
+        <div class= "text-center col-12">
+            <h1>
+                강의실 예약 메일 보내기
+            </h1>
+            <form class="gform pure-form pure-form-stacked" method="POST" data-email="example@email.net"
+            action="https://script.google.com/macros/s/AKfycbw4Ivga9TINBroFkR6H_544_lGTvLS9gAyGZ--7V2-SgTj3l5U/exec">
+            <!-- change the form action to your script url -->
+                <div class="form-elements">
+                    <fieldset class="pure-group">
+                        <label for="동의"><span>개인정보 수집 동의</span></label>
+                        <input type="checkbox" id = "동의" name="동의" value="예">예
+                    </fieldset>
+                    <fieldset class="pure-group">
+                    <label for="대표자"><span>대표자</span></label>
+                    <textarea id="대표자" name="대표자" placeholder="이름/학번/전화번호를 기재해주세요"></textarea>
+                    </fieldset>
+                    <fieldset class="pure-group">
+                        <label for="이메일"><span>이메일</span></label>
+                        <input type="email" id="이메일" name="이메일" placeholder="이메일을 기재해주세요">
+                    </fieldset>
+                    <fieldset class="pure-group">
+                        <label for="참가자"><span>참여자</span></label>
+                        <textarea rows="5" id="참여자" name="참여자" placeholder="이름/학번/전화번호를 기재해주세요"></textarea>
+                    </fieldset>
+                    <fieldset class="pure-group">
+                        <label for="강의실 명"><span>강의실 명</span></label>
+                        <textarea id="강의실 명" name="강의실 명" placeholder="강의실 명을 기재해주세요"></textarea>
+                    </fieldset>
+                    <fieldset class="pure-group">
+                        <label for="날짜"><span>날짜</span></label>
+                        <div id="form_date">
+                            <label>
+                                <input type="radio" id="day1" name="날짜" value="1">
+                                <script>document.write(day1);</script>
+                            </label>
+                            <label>
+                                <input type="radio" id="day2" name="날짜" value="2">
+                                <script>document.write(day2);</script>
+                            </label>
+                            <label>
+                                <input type="radio" id=day3 name="날짜" value="3">
+                                <script>document.write(day3);</script>
+                            </label>
+                            <label>
+                                <input type="radio" id=day4 name="날짜" value="4">
+                                <script>document.write(day4);</script>
+                            </label>
+                            <label>
+                                <input type="radio" id=day5 name="날짜" value="5">
+                                <script>document.write(day5);</script>
+                            </label>
+                            <label>
+                                <input type="radio" id=day6 name="날짜" value="6">
+                                <script>document.write(day6);</script>
+                            </label>
+                            <label>
+                                <input type="radio" id=day7 name="날짜" value="7">
+                                <script>document.write(day7);</script>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="pure-group">
+                        <label for="시간"><span>시간</span></label>
+                        <select id="시간" name="시간">
+                            <option value="9시~10시">9시~10시</option>
+                            <option value="10시~11시">10시~11시</option>
+                            <option value="11시~12시">11시~12시</option>
+                            <option value="12시~13시">12시~13시</option>
+                            <option value="13시~14시">13시~14시</option>
+                            <option value="14시~15시">14시~15시</option>
+                            <option value="15시~16시">15시~16시</option>
+                            <option value="16시~17시">16시~17시</option>
+                            <option value="17시~18시">17시~18시</option>
+                            <option value="18시~19시">18시~19시</option>
+                            <option value="19시~20시">19시~20시</option>
+                            <option value="20시~21시">20시~21시</option>
+                            <option value="21시~22시">21시~22시</option>
+                        </select>  
+                    </fieldset>
+                    <p>
+                    +주의사항<br>
+                    1. 승인 메일을 교학팀에 확인받고 강의실을 이용<br>
+                    2. 메일 제출 후, 수정 사항이 있거나 취소시, 010 - xxxx- tttttt 로 연락.
+                    </p><hr>
+                    <button class="btn btn-primary">
+                        <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
+                </div>
+                <!-- Customise the Thankyou Message People See when they submit the form: -->
+                <div class="thankyou_message" style="display:none;">
+                    <br><h2>메일이 전송되었습니다.</h2>
+                    <strong>승인 메일을 받은 후 강의실을 이용하세요.</strong>
+                </div>
+            </form>
+            <script>
+                document.getElementById("day1").value = day1;
+                document.getElementById("day2").value = day2;
+                document.getElementById("day3").value = day3;
+                document.getElementById("day4").value = day4;
+                document.getElementById("day5").value = day5;
+                document.getElementById("day6").value = day6;
+                document.getElementById("day7").value = day7;
+            </script>
+            <!-- Submit the Form to Google Using "AJAX" -->
+            <script data-cfasync="false" type="text/javascript"
+            src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js">
+            </script>
+            <!-- END -->  
+        </div>
     </div> 
-  </body>
-</html>
+</body>
+</html>  
+ 
