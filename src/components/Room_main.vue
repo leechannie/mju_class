@@ -5,7 +5,7 @@
                       :fields="fields"
                       @row-clicked="checkinfo"
     ></b-table>
-    <b-button>신청</b-button>
+    <b-button> <a href="https://ye-sun12.github.io/form/">신청</a></b-button>
     </div>
 </template>
 <script>
@@ -61,7 +61,7 @@ export default {
             this.items = sn.docs.map(v=> {
                 const item = v.data()
                 return {
-                    roomno:item.roomno, manager:item.manager,max_num:item.max_num,phone:item.phone,schedule:item.schedule
+                    roomno:item.roomno, manager:item.manager,max_num:item.max_num,phone:item.phone
                 }
             })
         }
