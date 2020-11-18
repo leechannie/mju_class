@@ -52,7 +52,7 @@ export default {
       context: contentData.context,
       user: data.User.filter(item => item.user_id === contentData.user_id)[0]
         .name,
-      created: contentData.created_at
+      created: contentData.created_at,
     };
   },
   methods: {
